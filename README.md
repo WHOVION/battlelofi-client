@@ -25,6 +25,7 @@
 * As a new user, I would like to be able to create an account 
 * As a user, I would like to be able to log in
 * As a user, I would like to be able to see all events/posts
+* thisis  0wjw
 * As a user, I would like to be able to RSVP to an event
 * As a user, I would like to be able to add a comment under a specific event
 * As a user, I would like to be able to Post an event
