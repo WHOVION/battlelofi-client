@@ -11,6 +11,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to="/profile">
 				profile
 			</Link>
+		
 		</>
 	 )
 
@@ -33,6 +34,19 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to="/">
 				<p>User App</p>
 			</Link>
+
+			<Link to="/new">
+				New Event
+			</Link>
+			
+			<Link to="/events">
+				Browse Events
+			</Link>
+			
+			<Link to="/details">
+				Event Details
+			</Link>
+
 
 			{currentUser ? loggedIn : loggedOut}
 		</nav>
