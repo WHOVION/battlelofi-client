@@ -78,7 +78,7 @@ function App() {
             element={<Events/>}
           />
           <Route
-            path="/details"
+            path="/events/:id"
             element={<Details/>}
           />
           {/*optionally conditionally render auth locked routes */}
