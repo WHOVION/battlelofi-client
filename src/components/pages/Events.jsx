@@ -43,7 +43,7 @@ const Events = () => {
 		<div>
 			<div>
 				<h1>Check out new Events here:</h1>
-				<h3>Create a new event</h3>
+				<Link to='./New'>Create a new event</Link>
 				{/* <Route 
 				
 				{currentUser ? loggedIn : loggedOut}
@@ -56,18 +56,25 @@ const Events = () => {
                 	{eventComponents}
         		</div>
 			</div>
-
-			{/* <Route
-			path='/details/:_id'
-			element={<Details detailId={detailId} setDetailId={setDetailId} />}
-			/> */}
+			<Router>
+				<Routes>
+					<Route
+					path='/details'
+					element={<Details 
+						detailId={detailId} 
+						setDetailId={setDetailId} 
+						// events={events} 
+						// setEvents={setEvents} 
+						/>}
+					/>
+				</Routes>
+			</Router>
 		</div>
 		</>
 	 );
 }
  
 export default Events;
-
 
 // new events, if user is logged in send them to new event page, if not send them to login page
 
