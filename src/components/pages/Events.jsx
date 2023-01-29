@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import Details from './Details'
+import { Link } from 'react-router-dom'
 
 
 const Events = () => {
 
 	const [events, setEvents] = useState([]) // array of all events
 	const [detailId, setDetailId] = useState('') // id of the last clicked event
+	const navigate = useNavigate()
+
+	const redirect = (events) => {
+		console.log(events)
+		setDetailId(events._id)
+		navigate('/details')	
+	}
 
 	// show all events
 	useEffect(() => {
@@ -32,18 +41,18 @@ const Events = () => {
 				<p>{event.time}</p> */}
 				<p>{event.gameTitle}</p>
 				{/* <p>{event.details}</p> */}
-				<button onClick={() => setDetailId(event._id)}>Event Details</button>
+				<button onClick={() => redirect(event)}>Event Details</button>
 			</div>
 		)
 	})
 
 
+
 	return ( 
-		<>
 		<div>
 			<div>
 				<h1>Check out new Events here:</h1>
-				<Link to='./New'>Create a new event</Link>
+				{/* <Link to='./New'>Create a new event</Link> */}
 				{/* <Route 
 				
 				{currentUser ? loggedIn : loggedOut}
@@ -52,25 +61,23 @@ const Events = () => {
 
 			<div style={{display: 'flex'}}>
             	<div style={{width: '50vw'}}>
-                	<h2>All bounties</h2>
+                	<h2>All Events</h2>
                 	{eventComponents}
         		</div>
 			</div>
-			<Router>
-				<Routes>
-					<Route
-					path='/details'
-					element={<Details 
+					{/* <Link
+					to='/details'> */}
+					{/* <Details 
 						detailId={detailId} 
 						setDetailId={setDetailId} 
 						// events={events} 
 						// setEvents={setEvents} 
-						/>}
-					/>
-				</Routes>
-			</Router>
+					/> */}
+		
+					{/* </Link> */}
+	
+			
 		</div>
-		</>
 	 );
 }
  
@@ -79,6 +86,8 @@ export default Events;
 // new events, if user is logged in send them to new event page, if not send them to login page
 
 // when user clicks 'see details' save id as prop and send them to Details page
+
+// how links work in return or above return
 
 // fix host name
 
