@@ -43,9 +43,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 				Browse Events
 			</Link>
 			
-			<Link to="/details">
-				Event Details
-			</Link>
+			
 
 
 			{currentUser ? loggedIn : loggedOut}

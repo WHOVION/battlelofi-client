@@ -79,7 +79,7 @@ function App() {
           />
           <Route
             path="/events/:id"
-            element={<Details/>}
+            element={<Details currentUser={currentUser} setCurrentUser={setCurrentUser}/>}
           />
           {/*optionally conditionally render auth locked routes */}
           {/* 
