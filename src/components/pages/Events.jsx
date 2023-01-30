@@ -14,7 +14,7 @@ const Events = () => {
 	const redirect = (events) => {
 		console.log(events)
 		setDetailId(events._id)
-		navigate('/details')	
+		navigate(`/events/${events._id}`)	
 	}
 
 	// show all events
@@ -66,9 +66,9 @@ const Events = () => {
         		</div>
 			</div>
 
-			<Details 	
+			{/* <Details 	
 				detailId={setDetailId} setDetailId={setDetailId}
-			/>		
+			/>		 */}
 		</div>
 	 );
 }
