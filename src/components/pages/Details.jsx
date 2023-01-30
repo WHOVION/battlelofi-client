@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Details() {
+export default function Details(props) {
 	const [event, setEvent] = useState([])
 	let { id } = useParams()
 	
@@ -17,6 +17,20 @@ export default function Details() {
 		}
 		fetchEvents()
 	},[])
+
+
+	console.log(props.currentUser)
+	const handleRSVPClick = async() => {
+		try{
+			const reqBody = {
+				id: props.currentUser.id,
+				event: id
+			}
+			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, reqBody)
+		}catch(err){
+			console.log(err)
+		}
+	}
 	
 	return (
 		<div>
@@ -34,7 +48,7 @@ export default function Details() {
 				<h3>Details:</h3>
 				<p>{event.details}</p>
 			</div>
-			
+			<button onClick={handleRSVPClick}>RSVP</button>
 			
 
 		</div>
