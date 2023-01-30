@@ -11,17 +11,15 @@ export default function Details(props) {
 			try{
 				const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
 				setEvent(response.data)
-
-				const host = await axios.get
+				
 			}catch(err){
 				console.log(err)
 			}
 		}
 		fetchEvents()
 	},[])
+	
 
-
-	console.log(props.currentUser)
 	const handleRSVPClick = async() => {
 		try{
 			const reqBody = {
@@ -33,11 +31,15 @@ export default function Details(props) {
 			console.log(err)
 		}
 	}
-	
+
+	console.log('whole state', event.host?.name)
+
+
 	return (
 		<div>
 			<h1>{event.name}</h1>
 			<h2>Game: {event.gameTitle}</h2>
+			<h2>Host: </h2>
 			<div>
 				<h3>Date and Time:</h3>
 				<p>{event.date} at {event.time} {event.timezone}</p>
