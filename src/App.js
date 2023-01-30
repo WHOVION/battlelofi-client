@@ -71,7 +71,7 @@ function App() {
           
           <Route
             path="/new"
-            element={<New/>}
+            element={<New currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
           <Route
             path="/events"

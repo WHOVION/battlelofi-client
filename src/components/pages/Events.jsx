@@ -35,7 +35,7 @@ const Events = () => {
 	const eventComponents =  events.map(event => {
 		return (
 			<div key={`event-${event._id}`}>
-				<h3>{event.host}</h3>
+				<h3>{event.name}</h3>
 				{/* <p>{event.location}</p>
 				<p>{event.date}</p>
 				<p>{event.time}</p> */}
@@ -65,10 +65,6 @@ const Events = () => {
                 	{eventComponents}
         		</div>
 			</div>
-
-			{/* <Details 	
-				detailId={setDetailId} setDetailId={setDetailId}
-			/>		 */}
 		</div>
 	 );
 }
