@@ -11,6 +11,8 @@ export default function Details(props) {
 			try{
 				const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
 				setEvent(response.data)
+
+				const host = await axios.get
 			}catch(err){
 				console.log(err)
 			}
