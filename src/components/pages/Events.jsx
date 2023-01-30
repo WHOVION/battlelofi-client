@@ -65,18 +65,10 @@ const Events = () => {
                 	{eventComponents}
         		</div>
 			</div>
-					{/* <Link
-					to='/details'> */}
-					{/* <Details 
-						detailId={detailId} 
-						setDetailId={setDetailId} 
-						// events={events} 
-						// setEvents={setEvents} 
-					/> */}
-		
-					{/* </Link> */}
-	
-			
+
+			<Details 	
+				detailId={setDetailId} setDetailId={setDetailId}
+			/>		
 		</div>
 	 );
 }
