@@ -172,28 +172,41 @@ const New = ({currentUser}) => {
 							type='text'
 							id='name'
 							placeholder='Name...'
+							name='name'
 							value={form.name}
 							onChange={e => setForm({...form, name: e.target.value})}
 						/>
+					</div>
 	
+					<div>
 						<label htmlFor='location'>Location:</label>
 						<input
 							type='text'
 							id='location'
 							placeholder='Location...'
+							location='location'
 							value={form.location}
 							onChange={e => setForm({...form, location: e.target.value})}
 						/>
-					</div>
-	
-					<div>
+					
 						<label htmlFor='date'>Date:</label>
 						<input
 							type='text'
 							id='date'
 							placeholder='Date...'
+							date='date'
 							value={form.date}
 							onChange={e => setForm({...form, date: e.target.value})}
+						/>
+
+						<label htmlFor='date'>Time:</label>
+						<input
+							type='text'
+							id='time'
+							placeholder='Time...'
+							time='time'
+							value={form.time}
+							onChange={e => setForm({...form, time: e.target.value})}
 						/>
 	
 						<label htmlFor='timezone'>Timezone:</label>
@@ -201,6 +214,7 @@ const New = ({currentUser}) => {
 							type='text'
 							id='timezone'
 							placeholder='Timezone...'
+							timezone='timezone'
 							value={form.timezone}
 							onChange={e => setForm({...form, timezone: e.target.value})}
 						/>
@@ -212,6 +226,7 @@ const New = ({currentUser}) => {
 							type='text'
 							id='gameTitle'
 							placeholder='Game Title...'
+							gameTitle='gameTitle'
 							value={form.gameTitle}
 							onChange={e => setForm({...form, gameTitle: e.target.value})}
 						/>
@@ -221,6 +236,7 @@ const New = ({currentUser}) => {
 							type='text'
 							id='details'
 							placeholder='Details...'
+							details='details'
 							value={form.details}
 							onChange={e => setForm({...form, details: e.target.value})}
 						/>
@@ -232,6 +248,7 @@ const New = ({currentUser}) => {
 							type= ''
 							// is this right?
 							id='host'
+							userId='userId'
 							value={currentUser.id}
 						/>
 					</div>
@@ -244,17 +261,3 @@ const New = ({currentUser}) => {
 }
  
 export default New;
-
-// make a button in events that lead to this page
-
-// make to functions, one where if logged in, show form
-
-// if not logged in, send to login page
-
-// in return, add conditional render
-
-// ?
- 
-// redirect where after submit, right now its goingto events page
-
-// the form state, rsvp and host empty?
