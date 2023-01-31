@@ -7,6 +7,7 @@ export default function Profile({currentUser, handleLogout}) {
 	
 	const [user, setUser] = useState('')
 	const [events, setEvents] = useState([])
+	const [rsvp, setRsvp] = useState([])
 	const navigate = useNavigate()
 	const redirect = (events) => {
 		navigate(`/events/${events._id}`)	
@@ -27,15 +28,13 @@ export default function Profile({currentUser, handleLogout}) {
 					}
 					// hit the auth locked endpoint
 					const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, options)
-					console.log(response.data)
 					setUser(response.data)
 					const allEvents = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
-					console.group(allEvents.data)
-					console.log(response.data._id)
 					const userEvents = allEvents.data.filter(event => event.host === response.data._id)
-					console.log('user created events',userEvents)
 					setEvents(userEvents)
-
+					
+					const userRsvp = allEvents.data.filter(event => event.rsvp.includes(response.data._id))
+					setRsvp(userRsvp)
 					
 				} catch (err) {
 					// if the error is a 401 -- that means that auth failed
@@ -55,6 +54,16 @@ export default function Profile({currentUser, handleLogout}) {
 
 	const createdEvents =  events.map(event => {
 		return (
+			<div key={`event-${event._id}`}>
+				<h3>{event.name}</h3>
+				<p>{event.date} at {event.time} {event.timezone}</p>
+				
+				<button onClick={() => redirect(event)}>Event Details</button>
+			</div>
+		)
+	})
+	const rsvpEvents = rsvp.map(event => {
+		return(
 			<div key={`event-${event._id}`}>
 				<h3>{event.name}</h3>
 				<p>{event.date} at {event.time} {event.timezone}</p>
@@ -94,6 +103,7 @@ export default function Profile({currentUser, handleLogout}) {
 				</div>
 				<div style = {{width: '50vw'}}>
 					<h3>RSVP'd events</h3>
+					{rsvpEvents}
 				</div>
 
 			</div>
