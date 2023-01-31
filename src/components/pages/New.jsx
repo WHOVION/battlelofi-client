@@ -19,10 +19,7 @@ const New = ({currentUser}) => {
 			gameTitle: '',
 			details: '',
 			// rsvp:[{}]
-			// host: [{
-			// 	type: mongoose.Schema.Types.ObjectId,
-			// 	ref: 'User'
-			//   }],
+			host: ''
 			//   rsvp: [{
 			// 	type: mongoose.Schema.Types.ObjectId,
 			// 	ref: 'User'
@@ -154,7 +151,7 @@ const New = ({currentUser}) => {
 	//  const redirect = () => {
 	// 	navigate('/login')	
 	// }
-	console.log(currentUser)
+	// console.log(currentUser)
 	// currentUser ? handleSubmit : navigate('/login')
 	if (!currentUser) {
 		return <Navigate to='/login' />
@@ -172,7 +169,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='name'
 							placeholder='Name...'
-							name='name'
 							value={form.name}
 							onChange={e => setForm({...form, name: e.target.value})}
 						/>
@@ -184,7 +180,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='location'
 							placeholder='Location...'
-							location='location'
 							value={form.location}
 							onChange={e => setForm({...form, location: e.target.value})}
 						/>
@@ -194,7 +189,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='date'
 							placeholder='Date...'
-							date='date'
 							value={form.date}
 							onChange={e => setForm({...form, date: e.target.value})}
 						/>
@@ -204,7 +198,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='time'
 							placeholder='Time...'
-							time='time'
 							value={form.time}
 							onChange={e => setForm({...form, time: e.target.value})}
 						/>
@@ -214,7 +207,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='timezone'
 							placeholder='Timezone...'
-							timezone='timezone'
 							value={form.timezone}
 							onChange={e => setForm({...form, timezone: e.target.value})}
 						/>
@@ -226,7 +218,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='gameTitle'
 							placeholder='Game Title...'
-							gameTitle='gameTitle'
 							value={form.gameTitle}
 							onChange={e => setForm({...form, gameTitle: e.target.value})}
 						/>
@@ -236,23 +227,21 @@ const New = ({currentUser}) => {
 							type='text'
 							id='details'
 							placeholder='Details...'
-							details='details'
 							value={form.details}
 							onChange={e => setForm({...form, details: e.target.value})}
 						/>
 					</div>
 	
-					<div>
+					{/* <div>
 						<input
 							hidden
 							type= ''
-							// is this right?
 							id='host'
-							userId='userId'
 							value={currentUser.id}
+							// readOnly
 						/>
 					</div>
-	
+	 */}
 					<button type='submit'>Create Event</button>
 				</form>
 			</div>
