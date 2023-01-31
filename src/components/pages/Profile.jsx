@@ -6,9 +6,13 @@ export default function Profile({currentUser, handleLogout}) {
 	// state for the secret message (aka user privilaged data)
 	
 	const [user, setUser] = useState('')
-	
+	const [events, setEvents] = useState([])
 	const navigate = useNavigate()
+	const redirect = (events) => {
+		navigate(`/events/${events._id}`)	
+	}
 	
+
 	// useEffect for getting the user data and checking auth
 	useEffect(() => {
 		const fetchData = async () => {
@@ -23,10 +27,16 @@ export default function Profile({currentUser, handleLogout}) {
 					}
 					// hit the auth locked endpoint
 					const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, options)
-					// example POST with auth headers (options are always last argument)
-					// await axios.post(url, requestBody (form data), options)
-					// set the secret user message in state
+					console.log(response.data)
 					setUser(response.data)
+					const allEvents = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
+					console.group(allEvents.data)
+					console.log(response.data._id)
+					const userEvents = allEvents.data.filter(event => event.host === response.data._id)
+					console.log('user created events',userEvents)
+					setEvents(userEvents)
+
+					
 				} catch (err) {
 					// if the error is a 401 -- that means that auth failed
 					console.warn(err)
@@ -42,7 +52,17 @@ export default function Profile({currentUser, handleLogout}) {
 			}
 			fetchData()
 	}, []) // only fire on the first render of this component
-	
+
+	const createdEvents =  events.map(event => {
+		return (
+			<div key={`event-${event._id}`}>
+				<h3>{event.name}</h3>
+				<p>{event.date} at {event.time} {event.timezone}</p>
+				
+				<button onClick={() => redirect(event)}>Event Details</button>
+			</div>
+		)
+	})
 	
 	
 	// useEffect(()=> {
@@ -64,12 +84,19 @@ export default function Profile({currentUser, handleLogout}) {
 	
 	return (
 		<div>
-			<h1>Hello, {currentUser?.name}</h1>
+			<h1>Hello, {user?.name}</h1>
+			<p>Logged in: {user?.email}</p>
 
-			<h2>{currentUser?.id}</h2>
-			<h2>Here is the secret message that is only availible to users of User App:</h2>
+			<div style = {{display: 'flex'}}>
+				<div style = {{width:'50vw'}}>
+					<h3>Created Events</h3>
+					{createdEvents}
+				</div>
+				<div style = {{width: '50vw'}}>
+					<h3>RSVP'd events</h3>
+				</div>
 
-			<h3></h3>
+			</div>
 		</div>
 	)
 }
