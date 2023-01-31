@@ -75,7 +75,7 @@ function App() {
           />
           <Route
             path="/events"
-            element={<Events/>}
+            element={<Events currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
           <Route
             path="/events/:id"

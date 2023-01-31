@@ -5,7 +5,7 @@ import Details from './Details'
 import { Link } from 'react-router-dom'
 
 
-const Events = () => {
+const Events = ({currentUser}) => {
 
 	const [events, setEvents] = useState([]) // array of all events
 	const [detailId, setDetailId] = useState('') // id of the last clicked event
@@ -17,6 +17,15 @@ const Events = () => {
 		navigate(`/events/${events._id}`)	
 	}
 
+	//  this is called a function expression
+	// const handleRoute = () => {
+	// 	if (!currentUser) {
+	// 		navigate('/login')
+	// 	} else {
+	// 		navigate('/new')
+	// 	}
+	// }
+	
 	// show all events
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -52,11 +61,9 @@ const Events = () => {
 		<div>
 			<div>
 				<h1>Check out new Events here:</h1>
-				{/* <Link to='./New'>Create a new event</Link> */}
-				{/* <Route 
-				
-				{currentUser ? loggedIn : loggedOut}
-				/> */}
+				<Link to ='/new'>
+				<button>Create a new Event</button>
+				</Link>
 			</div>
 
 			<div style={{display: 'flex'}}>
