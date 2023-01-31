@@ -1,28 +1,245 @@
-
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+// some r componentns
+// things that start with 'use' r hooks
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, Link } from 'react-router-dom'
+import Events from "./Events";
 
 
 const New = ({currentUser}) => {
+	// state that holds the values that the user has typed
+		// const [currentUser, setCurrentUser] = useState(null)
+		
+		const [form, setForm] = useState({
+			name: '',
+			location: '',
+			date: '',
+			time: '',
+			timezone: '',
+			gameTitle: '',
+			details: '',
+			// rsvp:[{}]
+			// host: [{
+			// 	type: mongoose.Schema.Types.ObjectId,
+			// 	ref: 'User'
+			//   }],
+			//   rsvp: [{
+			// 	type: mongoose.Schema.Types.ObjectId,
+			// 	ref: 'User'
+			//   }]
+		})  
+		// console.log(process.env.REACT_APP_SERVER_URL)
 
-	const loggedIn = (
-		<>
-			{/* if the user is logged in... */}
-			{/* do form here */}
-		</>
-	 )
+	// invoke the useNavigate hook to get a navigate function to use
+	const navigate = useNavigate()
 
-	 const loggedOut = (
-		<>
-			{/* if the user is not logged in... */}
-			{/* redirect to login page */}
-		</>
-	 )
+	const handleSubmit = e => {
+				e.preventDefault()
+				// console.log('create new event')
+				// take the form data from the state, post it to the backend with axios
+				// axios.post(url to make a request to,{request body }. {options})
+				axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, form)
+					.then(response => {
+						console.log(response.data)
+						// once the backend gets back to use, navigate to the /events route to see all events
+						navigate('/events') // like clicking a link for the user
+					})
+					.catch(console.warn)
+					// handle erros 
+			}
+
+	// const loggedIn = () => {
+		{/* if the user is logged in... */}
+	
+		// submit handler function that posts the form data from state to the backend
+		// const handleSubmit = e => {
+		// 	e.preventDefault()
+		// 	// console.log('create new event')
+		// 	// take the form data from the state, post it to the backend with axios
+		// 	// axios.post(url to make a request to,{request body }. {options})
+		// 	axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, form)
+		// 		.then(response => {
+		// 			console.log(response.data)
+		// 			// once the backend gets back to use, navigate to the /events route to see all events
+		// 			navigate('/') // like clicking a link for the user
+		// 		})
+		// 		.catch(console.warn)
+		// 		// handle errors 
+		// }
+		// return ( 
+		// 	<div>
+		// 		<form onSubmit={handleSubmit}>
+		// 			<div>
+		// 				<label htmlFor='name'>Name:</label>
+		// 				<input
+		// 					type='text'
+		// 					id='name'
+		// 					placeholder='Name...'
+		// 					value={form.name}
+		// 					onChange={e => setForm({...form, name: e.target.value})}
+		// 					// automatically add users name to form, so would this be hidden?
+		// 				/>
+	
+		// 				<label htmlFor='location'>Location:</label>
+		// 				<input
+		// 					type='text'
+		// 					id='location'
+		// 					placeholder='Location...'
+		// 					value={form.location}
+		// 					onChange={e => setForm({...form, location: e.target.value})}
+		// 				/>
+		// 			</div>
+	
+		// 			<div>
+		// 				<label htmlFor='date'>Date:</label>
+		// 				<input
+		// 					type='text'
+		// 					id='date'
+		// 					placeholder='Date...'
+		// 					value={form.date}
+		// 					onChange={e => setForm({...form, date: e.target.value})}
+		// 				/>
+	
+		// 				<label htmlFor='timezone'>Timezone:</label>
+		// 				<input
+		// 					type='text'
+		// 					id='timezone'
+		// 					placeholder='Timezone...'
+		// 					value={form.timezone}
+		// 					onChange={e => setForm({...form, timezone: e.target.value})}
+		// 				/>
+		// 			</div>
+	
+		// 			<div>
+		// 				<label htmlFor='gameTitle'>Game:</label>
+		// 				<input
+		// 					type='text'
+		// 					id='gameTitle'
+		// 					placeholder='Game Title...'
+		// 					value={form.gameTitle}
+		// 					onChange={e => setForm({...form, gameTitle: e.target.value})}
+		// 				/>
+	
+		// 				<label htmlFor='details'>Details About event:</label>
+		// 				<input
+		// 					type='text'
+		// 					id='details'
+		// 					placeholder='Details...'
+		// 					value={form.details}
+		// 					onChange={e => setForm({...form, details: e.target.value})}
+		// 				/>
+		// 			</div>
+	
+		// 			<div>
+		// 				<input
+		// 					hidden
+		// 					type= {''}
+		// 					// is this right?
+		// 					id='rsvp'
+		// 					value={form.rsvp}
+		// 				/>
+		// 			</div>
+	
+		// 			<button type='submit'>Create Event</button>
+		// 		</form>
+		// 	</div>
+		//  );
+	// }
+
+	//  const loggedOut = () => {
+	// 		navigate('./login')
+	// 		// /api-v1/login
+	// 		// ./api-v1/users/register
+	//  }
+	//  const redirect = () => {
+	// 	navigate('/login')	
+	// }
+	console.log(currentUser)
+	// currentUser ? handleSubmit : navigate('/login')
+	if (!currentUser) {
+		return <Navigate to='/login' />
+	} 
 	return ( 
-		<>
 			<div>
-			{currentUser ? loggedIn : loggedOut}
+			{/* {currentUser ? loggedIn : loggedOut} */}
+			{/* {currentUser ? handleSubmit : navigate('./login')} */}
+			<div>
+				{/* if else statement on this form */}
+				<form onSubmit={handleSubmit}>
+					<div>
+						<label htmlFor='name'>Event Name:</label>
+						<input
+							type='text'
+							id='name'
+							placeholder='Name...'
+							value={form.name}
+							onChange={e => setForm({...form, name: e.target.value})}
+						/>
+	
+						<label htmlFor='location'>Location:</label>
+						<input
+							type='text'
+							id='location'
+							placeholder='Location...'
+							value={form.location}
+							onChange={e => setForm({...form, location: e.target.value})}
+						/>
+					</div>
+	
+					<div>
+						<label htmlFor='date'>Date:</label>
+						<input
+							type='text'
+							id='date'
+							placeholder='Date...'
+							value={form.date}
+							onChange={e => setForm({...form, date: e.target.value})}
+						/>
+	
+						<label htmlFor='timezone'>Timezone:</label>
+						<input
+							type='text'
+							id='timezone'
+							placeholder='Timezone...'
+							value={form.timezone}
+							onChange={e => setForm({...form, timezone: e.target.value})}
+						/>
+					</div>
+	
+					<div>
+						<label htmlFor='gameTitle'>Game:</label>
+						<input
+							type='text'
+							id='gameTitle'
+							placeholder='Game Title...'
+							value={form.gameTitle}
+							onChange={e => setForm({...form, gameTitle: e.target.value})}
+						/>
+	
+						<label htmlFor='details'>Details About event:</label>
+						<input
+							type='text'
+							id='details'
+							placeholder='Details...'
+							value={form.details}
+							onChange={e => setForm({...form, details: e.target.value})}
+						/>
+					</div>
+	
+					<div>
+						<input
+							hidden
+							type= ''
+							// is this right?
+							id='host'
+							value={currentUser.id}
+						/>
+					</div>
+	
+					<button type='submit'>Create Event</button>
+				</form>
 			</div>
-		</>
+		</div>
 	 );
 }
  
@@ -36,119 +253,8 @@ export default New;
 
 // in return, add conditional render
 
-// import axios from "axios"
-// import { useNavigate } from "react-router-dom"
-// import { useState } from "react"
-
-// const NewBounty = () => {
-//     // state that holds the values that the user has typed
-//     const [form, setForm] = useState({
-//         // initialize all of the values as empty strings
-//         name: '',
-//         wantedFor: '',
-//         client: '',
-//         ship: '',
-//         reward: '',
-//         lastSeen: '',
-//         captured: false
-//     })
-//     // console.log(process.env.REACT_APP_SERVER_URL)
-
-//     // invoke the useNavigate hook to get a navigate function to use
-//     const navigate = useNavigate()
-
-//     // submit handler function that posts the form data from state to the backend
-//     const handleSubmit = e => {
-//         e.preventDefault()
-//         // console.log('create new bounty')
-//         // take the form data from the state, post it to the backend with axios
-//         // axios.post(url to make a request to,{request body }. {options})
-//         axios.post(`${process.env.REACT_APP_SERVER_URL}/bounties`, form)
-//             .then(response => {
-//                 console.log(response.data)
-//                 // once the backend gets back to use, navigate to the / route to see all bounties
-//                 navigate('/') // like clicking a link for the user
-//             })
-//             .catch(console.warn)
-//             // handle erros 
-//     }
-//     return ( 
-//         <div>
-//             <form onSubmit={handleSubmit}>
-//                 <div>
-//                     <label htmlFor='name'>Name:</label>
-//                     <input
-//                         type='text'
-//                         id='name'
-//                         placeholder='name...'
-//                         value={form.name}
-//                         onChange={e => setForm({...form, name: e.target.value})}
-//                     />
-
-//                     <label htmlFor='wantedFor'>Wanted For:</label>
-//                     <input
-//                         type='text'
-//                         id='wantedFor'
-//                         placeholder='Wanted For...'
-//                         value={form.wantedFor}
-//                         onChange={e => setForm({...form, wantedFor: e.target.value})}
-//                     />
-//                 </div>
-
-//                 <div>
-//                     <label htmlFor='client'>Client:</label>
-//                     <input
-//                         type='text'
-//                         id='client'
-//                         placeholder='client...'
-//                         value={form.client}
-//                         onChange={e => setForm({...form, client: e.target.value})}
-//                     />
-
-//                     <label htmlFor='ship'>Ship:</label>
-//                     <input
-//                         type='text'
-//                         id='ship'
-//                         placeholder='Ship...'
-//                         value={form.ship}
-//                         onChange={e => setForm({...form, ship: e.target.value})}
-//                     />
-//                 </div>
-
-//                 <div>
-//                     <label htmlFor='reward'>Reward:</label>
-//                     <input
-//                         type='text'
-//                         id='reward'
-//                         placeholder='Reward...'
-//                         value={form.reward}
-//                         onChange={e => setForm({...form, reward: e.target.value})}
-//                     />
-
-//                     <label htmlFor='lastSeen'>Last Seen:</label>
-//                     <input
-//                         type='text'
-//                         id='lastSeen'
-//                         placeholder='Last Seen...'
-//                         value={form.lastSeen}
-//                         onChange={e => setForm({...form, lastSeen: e.target.value})}
-//                     />
-//                 </div>
-
-//                 <div>
-//                     <label htmlFor='captured'>Has been Captured:</label>
-//                     <input
-//                         type='checkbox'
-//                         id='captures'
-//                         value={form.captured}
-//                         onChange={e => setForm({...form, captured: !form.captured })}
-//                     />
-//                 </div>
-
-//                 <button type='submit'>Submit</button>
-//             </form>
-//         </div>
-//      );
-// }
+// ?
  
-// export default NewBounty;
+// redirect where after submit, right now its goingto events page
+
+// the form state, rsvp and host empty?
