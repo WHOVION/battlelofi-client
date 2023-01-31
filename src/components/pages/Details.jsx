@@ -58,7 +58,7 @@ export default function Details(props) {
 				setDidRSVP(true)
 			}
 			const reqBody = {
-				id: props.currentUser.id,
+				id: props.currentUser?.id,
 				event: id
 			}
 			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, reqBody)
