@@ -17,14 +17,14 @@ const Events = ({currentUser}) => {
 		navigate(`/events/${events._id}`)	
 	}
 
-	// function expression
-	const handleRoute = () => {
-		if (!currentUser) {
-			navigate('/login')
-		} else {
-			navigate('/new')
-		}
-	}
+	//  this is called a function expression
+	// const handleRoute = () => {
+	// 	if (!currentUser) {
+	// 		navigate('/login')
+	// 	} else {
+	// 		navigate('/new')
+	// 	}
+	// }
 	
 	// show all events
 	useEffect(() => {
