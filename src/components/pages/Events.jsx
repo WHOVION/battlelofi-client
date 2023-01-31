@@ -17,6 +17,7 @@ const Events = ({currentUser}) => {
 		navigate(`/events/${events._id}`)	
 	}
 
+	// function expression
 	const handleRoute = () => {
 		if (!currentUser) {
 			navigate('/login')
@@ -60,7 +61,9 @@ const Events = ({currentUser}) => {
 		<div>
 			<div>
 				<h1>Check out new Events here:</h1>
-				<button onClick={() => handleRoute()}>Create a new Event</button>
+				<Link to ='/new'>
+				<button>Create a new Event</button>
+				</Link>
 			</div>
 
 			<div style={{display: 'flex'}}>
