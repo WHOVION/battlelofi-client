@@ -78,7 +78,7 @@ export default function Details(props) {
 
 	const handleEditClick = async() => {
 		try{
-			navigate(`/event/edit/${id}`)
+			navigate(`/events/edit/${id}`)
 		}catch(err){
 			console.log(err)
 		}
