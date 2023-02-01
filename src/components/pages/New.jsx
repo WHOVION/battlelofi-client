@@ -9,6 +9,10 @@ import Events from "./Events";
 const New = ({currentUser}) => {
 	// state that holds the values that the user has typed
 		// const [currentUser, setCurrentUser] = useState(null)
+
+		// if (!currentUser) {
+		// 	return <Navigate to='/login' />
+		// } 
 		
 		const [form, setForm] = useState({
 			name: '',
@@ -18,15 +22,11 @@ const New = ({currentUser}) => {
 			timezone: '',
 			gameTitle: '',
 			details: '',
-			// rsvp:[{}]
-			// host: [{
-			// 	type: mongoose.Schema.Types.ObjectId,
-			// 	ref: 'User'
-			//   }],
-			//   rsvp: [{
-			// 	type: mongoose.Schema.Types.ObjectId,
-			// 	ref: 'User'
-			//   }]
+			// this is the first way to do it
+			// host: currentUser?.id
+			//this is second way to do it
+			host: ''
+			
 		})  
 		// console.log(process.env.REACT_APP_SERVER_URL)
 
@@ -38,7 +38,9 @@ const New = ({currentUser}) => {
 				// console.log('create new event')
 				// take the form data from the state, post it to the backend with axios
 				// axios.post(url to make a request to,{request body }. {options})
-				axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, form)
+				// another way to send id to db, and in the axios, form would be formCopy, and state host would be empty string
+				const formCopy = {...form, host:currentUser.id} 
+				axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, formCopy)
 					.then(response => {
 						console.log(response.data)
 						// once the backend gets back to use, navigate to the /events route to see all events
@@ -154,7 +156,7 @@ const New = ({currentUser}) => {
 	//  const redirect = () => {
 	// 	navigate('/login')	
 	// }
-	console.log(currentUser)
+	// console.log(currentUser)
 	// currentUser ? handleSubmit : navigate('/login')
 	if (!currentUser) {
 		return <Navigate to='/login' />
@@ -164,7 +166,6 @@ const New = ({currentUser}) => {
 			{/* {currentUser ? loggedIn : loggedOut} */}
 			{/* {currentUser ? handleSubmit : navigate('./login')} */}
 			<div>
-				{/* if else statement on this form */}
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor='name'>Event Name:</label>
@@ -172,7 +173,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='name'
 							placeholder='Name...'
-							name='name'
 							value={form.name}
 							onChange={e => setForm({...form, name: e.target.value})}
 						/>
@@ -184,7 +184,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='location'
 							placeholder='Location...'
-							location='location'
 							value={form.location}
 							onChange={e => setForm({...form, location: e.target.value})}
 						/>
@@ -194,7 +193,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='date'
 							placeholder='Date...'
-							date='date'
 							value={form.date}
 							onChange={e => setForm({...form, date: e.target.value})}
 						/>
@@ -204,7 +202,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='time'
 							placeholder='Time...'
-							time='time'
 							value={form.time}
 							onChange={e => setForm({...form, time: e.target.value})}
 						/>
@@ -214,7 +211,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='timezone'
 							placeholder='Timezone...'
-							timezone='timezone'
 							value={form.timezone}
 							onChange={e => setForm({...form, timezone: e.target.value})}
 						/>
@@ -226,7 +222,6 @@ const New = ({currentUser}) => {
 							type='text'
 							id='gameTitle'
 							placeholder='Game Title...'
-							gameTitle='gameTitle'
 							value={form.gameTitle}
 							onChange={e => setForm({...form, gameTitle: e.target.value})}
 						/>
@@ -236,22 +231,20 @@ const New = ({currentUser}) => {
 							type='text'
 							id='details'
 							placeholder='Details...'
-							details='details'
 							value={form.details}
 							onChange={e => setForm({...form, details: e.target.value})}
 						/>
 					</div>
 	
-					<div>
+					{/* <div>
 						<input
 							hidden
 							type= ''
-							// is this right?
 							id='host'
-							userId='userId'
 							value={currentUser.id}
+							// readOnly
 						/>
-					</div>
+					</div> */}
 	
 					<button type='submit'>Create Event</button>
 				</form>

@@ -55,8 +55,6 @@ const Events = ({currentUser}) => {
 		)
 	})
 
-
-
 	return ( 
 		<div>
 			<div>
@@ -77,14 +75,3 @@ const Events = ({currentUser}) => {
 }
  
 export default Events;
-
-// new events, if user is logged in send them to new event page, if not send them to login page
-
-// when user clicks 'see details' save id as prop and send them to Details page
-
-// how links work in return or above return
-
-// fix host name
-
-
-// {currentUser ? loggedIn : loggedOut}

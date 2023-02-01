@@ -12,7 +12,8 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import New from './components/pages/New'
 import Details from './components/pages/Details'
-import Events from './components/pages/Events'  
+import Events from './components/pages/Events' 
+import Edit from './components/pages/Edit' 
 import './App.css'
 import jwt_decode from 'jwt-decode'
 
@@ -80,6 +81,10 @@ function App() {
           <Route
             path="/events/:id"
             element={<Details currentUser={currentUser} setCurrentUser={setCurrentUser}/>}
+          />
+          <Route
+            path="/events/edit/:id"
+            element={<Edit />}
           />
           {/*optionally conditionally render auth locked routes */}
           {/* 
