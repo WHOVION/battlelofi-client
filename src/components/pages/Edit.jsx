@@ -10,18 +10,18 @@ const Edit = () => {
     const navigate = useNavigate()
 
     // define state
-    // the res is response
     const [form, setForm] = useState({
-        name: 'res.name',
-        location: 'res.location',
-        date: 'res.date',
-        time: 'res.time',
-        timezone: 'res.timezone',
-        gameTitle: 'res.gameTitle',
-        details: 'res.details'
+        name: '',
+        location: '',
+        date: '',
+        time: '',
+        timezone: '',
+        gameTitle: '',
+        details: ''
     })
 
     // this function calls the api and gets the event id and its informstion
+    // everytime u see 'use' its a react hook, componentDidMount in class
 	useEffect(() => {
 		const fetchEvents = async () => {
 			try {
@@ -39,12 +39,13 @@ const Edit = () => {
     const handleSubmit = async  e => {
                 e.preventDefault()
                 try { 
-                    // this calls the 'put' in the server and updates form?
+                    // making a put request to backend
+                    // whenver we send post/put, we send a req.body
                     await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, form)
                     // this is the newest things edited
-                    const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
+                    // const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
                     // states now have newest edits 
-                    setForm(response.data)
+                    // setForm(response.data)
                     // redirect user after they submit the edit to events page
                     navigate(`/events/${id}`)
                 } catch (err) {
