@@ -9,6 +9,10 @@ import Events from "./Events";
 const New = ({currentUser}) => {
 	// state that holds the values that the user has typed
 		// const [currentUser, setCurrentUser] = useState(null)
+
+		// if (!currentUser) {
+		// 	return <Navigate to='/login' />
+		// } 
 		
 		const [form, setForm] = useState({
 			name: '',
@@ -18,12 +22,11 @@ const New = ({currentUser}) => {
 			timezone: '',
 			gameTitle: '',
 			details: '',
-			// rsvp:[{}]
-			host: currentUser.id
-			//   rsvp: [{
-			// 	type: mongoose.Schema.Types.ObjectId,
-			// 	ref: 'User'
-			//   }]
+			// this is the first way to do it
+			// host: currentUser?.id
+			//this is second way to do it
+			host: ''
+			
 		})  
 		// console.log(process.env.REACT_APP_SERVER_URL)
 
@@ -35,8 +38,9 @@ const New = ({currentUser}) => {
 				// console.log('create new event')
 				// take the form data from the state, post it to the backend with axios
 				// axios.post(url to make a request to,{request body }. {options})
-				// form.host=currentUser.id
-				axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, form)
+				// another way to send id to db, and in the axios, form would be formCopy, and state host would be empty string
+				const formCopy = {...form, host:currentUser.id} 
+				axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, formCopy)
 					.then(response => {
 						console.log(response.data)
 						// once the backend gets back to use, navigate to the /events route to see all events
@@ -162,7 +166,6 @@ const New = ({currentUser}) => {
 			{/* {currentUser ? loggedIn : loggedOut} */}
 			{/* {currentUser ? handleSubmit : navigate('./login')} */}
 			<div>
-				{/* if else statement on this form */}
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor='name'>Event Name:</label>
