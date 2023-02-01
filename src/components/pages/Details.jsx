@@ -30,13 +30,13 @@ export default function Details(props) {
 			<p></p>
 		</>
 	)
+	let buttons 
 	
 	useEffect(()=> {
 		const fetchEvents = async() => {
 			try{
 				const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
 				setEvent(response.data)
-				
 			}catch(err){
 				console.log(err)
 			}
@@ -67,7 +67,35 @@ export default function Details(props) {
 		}
 	}
 
-	
+	const handleDeleteClick = async() => {
+		try{
+			const deleteEvent = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
+			navigate(`/events`)
+		}catch(err){
+			console.log(err)
+		}
+	}
+
+	const handleEditClick = async() => {
+		try{
+
+		}catch(err){
+			console.log(err)
+		}
+	}
+
+	if(props.currentUser?.id === event.host?._id){
+		buttons = (
+			<>
+				<button onClick={handleEditClick}>Edit</button>
+				<button onClick={handleDeleteClick}>Delete</button>
+			</>
+		)
+	} else {
+		buttons = (
+			<></>
+		)
+	}
 	return (
 		<div>
 			<h1>{event.name}</h1>
@@ -86,11 +114,12 @@ export default function Details(props) {
 				<p>{event.details}</p>
 			</div>
 			<button onClick={handleRSVPClick}>RSVP</button>
+			
 
 			{isHost ? yes : no}
 			{isRSVP ? yesRSVPd : no}
 			{didRSVP ? yesRSVP : no}
-			
+			{buttons}
 
 		</div>
 	)
