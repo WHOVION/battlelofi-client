@@ -19,7 +19,7 @@ const New = ({currentUser}) => {
 			gameTitle: '',
 			details: '',
 			// rsvp:[{}]
-			host: ''
+			host: currentUser.id
 			//   rsvp: [{
 			// 	type: mongoose.Schema.Types.ObjectId,
 			// 	ref: 'User'
@@ -35,6 +35,7 @@ const New = ({currentUser}) => {
 				// console.log('create new event')
 				// take the form data from the state, post it to the backend with axios
 				// axios.post(url to make a request to,{request body }. {options})
+				// form.host=currentUser.id
 				axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, form)
 					.then(response => {
 						console.log(response.data)
@@ -240,8 +241,8 @@ const New = ({currentUser}) => {
 							value={currentUser.id}
 							// readOnly
 						/>
-					</div>
-	 */}
+					</div> */}
+	
 					<button type='submit'>Create Event</button>
 				</form>
 			</div>
