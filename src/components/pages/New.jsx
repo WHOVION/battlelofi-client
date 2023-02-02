@@ -162,7 +162,7 @@ const New = ({currentUser}) => {
 		return <Navigate to='/login' />
 	} 
 	return ( 
-			<div>
+		<div>
 			{/* {currentUser ? loggedIn : loggedOut} */}
 			{/* {currentUser ? handleSubmit : navigate('./login')} */}
 			<div>
@@ -245,7 +245,6 @@ const New = ({currentUser}) => {
 							// readOnly
 						/>
 					</div> */}
-	
 					<button type='submit'>Create Event</button>
 				</form>
 			</div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Card from 'react-bootstrap/Card';
 
 export default function Profile({currentUser, handleLogout}) {
 	// state for the secret message (aka user privilaged data)
@@ -54,22 +55,68 @@ export default function Profile({currentUser, handleLogout}) {
 
 	const createdEvents =  events.map(event => {
 		return (
-			<div key={`event-${event._id}`}>
-				<h3>{event.name}</h3>
-				<p>{event.date} at {event.time} {event.timezone}</p>
-				
-				<button onClick={() => redirect(event)}>Event Details</button>
+			<div className="card" key={`event-${event._id}`}>
+				<div className="card__content">
+					<div className="card__content-heading">
+						<h2>{event.name}</h2>
+					</div>
+					<div className="card__content-body">
+						<p> 
+							{event.date}
+						</p>
+					</div>
+					<div className="card__content-footer">
+						<button onClick={() => redirect(event)}>Event Details</button>
+					</div>
+				</div>
 			</div>
+			// <div className="card" key={`event-${event._id}`}>
+			// 	<div className="card-details">
+			// 		<p className="text-title">{event.name}</p>
+			// 		<p className="text-body">{event.date} at {event.time} {event.timezone}</p>
+			// 	</div>
+			// 	<button className="card-button" onClick={() => redirect(event)}>Event Details</button>
+			// </div>
+			// <div key={`event-${event._id}`}>
+			// 	<h3>{event.name}</h3>
+			// 	<p>{event.date} at {event.time} {event.timezone}</p>
+				
+			// 	<button onClick={() => redirect(event)}>Event Details</button>
+			// </div>
 		)
 	})
 	const rsvpEvents = rsvp.map(event => {
 		return(
-			<div key={`event-${event._id}`}>
-				<h3>{event.name}</h3>
-				<p>{event.date} at {event.time} {event.timezone}</p>
-				
-				<button onClick={() => redirect(event)}>Event Details</button>
+
+			<div className="card" key={`event-${event._id}`}>
+				<div className="card__content">
+					<div className="card__content-heading">
+						<h2>{event.name}</h2>
+					</div>
+					<div className="card__content-body">
+						<p> 
+							{event.date}
+						</p>
+					</div>
+					<div className="card__content-footer">
+						<button onClick={() => redirect(event)}>Event Details</button>
+					</div>
+				</div>
 			</div>
+
+			// <div className="card" key={`event-${event._id}`}>
+			// 	<div className="card-details">
+			// 		<p className="text-title">{event.name}</p>
+			// 		<p className="text-body">{event.date} at {event.time} {event.timezone}</p>
+			// 	</div>
+			// 	<button className="card-button" onClick={() => redirect(event)}>Event Details</button>
+			// </div>
+			// <div key={`event-${event._id}`}>
+			// 	<h3>{event.name}</h3>
+			// 	<p>{event.date} at {event.time} {event.timezone}</p>
+				
+			// 	<button onClick={() => redirect(event)}>Event Details</button>
+			// </div>
 		)
 	})
 	

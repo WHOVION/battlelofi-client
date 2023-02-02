@@ -106,8 +106,8 @@ export default function Details(props) {
 				<p>{event.date} at {event.time} {event.timezone}</p>
 			</div>
 			<div>
-				<h3>Location:</h3>
-				<p>{event.location}</p>
+				<h3>Location: <span>{event.location}</span></h3>
+				
 			</div>
 			<div>
 				<h3>Details:</h3>
