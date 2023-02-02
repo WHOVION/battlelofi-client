@@ -1,10 +1,17 @@
 body {
   /* text-align: center; */
   background-color: #03001C;
+  /* background-color: white; */
+  color: #D82148;
   margin: 0;
   font-family: 'Electrolize', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.aboutP {
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
 }
 
 :root{
@@ -15,11 +22,10 @@ code {
     monospace;
 }
 
-.button {
-  margin-top: 30px;
-}
-
 h1 {
+  color: #D82148
+}
+h2 {
   color: #D82148
 }
 
@@ -92,6 +98,8 @@ h1 {
   box-shadow: none;
 }
 /* this is the end of the input css */
+
+/* start of the card */
 .card {
   margin: 20px auto;
   width:240px;
@@ -154,6 +162,489 @@ h1 {
   border: 1px solid white;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
  }
- 
+ /* end of the card */
 
+ /* start of the rsvp button */
+ .rsvp {
+  /* font-weight: bold; */
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 13px;
+  /* this is the color of text */
+  color: black;
+  text-transform: uppercase;
+  border: solid 2px black;
+  letter-spacing: 1px;
+  font-weight: 800;
+  font-size: 18px;
+  background-color: hsl(49deg 98% 60%);
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.rsvp:active {
+  transform: scale(.9);
+  transition: all 100ms ease;
+}
+
+.rsvp svg {
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.second {
+  transition: all .5s ease;
+  transition-delay: 300ms;
+}
+
+.rsvp:hover svg {
+  transform: scale(3) translate(50%);
+}
+
+.first {
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.rsvp:hover .first {
+  transform: translateX(10px);
+  transition-delay: 300ms;
+}
+
+.rsvp:hover .second {
+  transform: translateX(200%);
+  transition-delay: 300ms;
+}
+ /* end of the rsvp button */
+
+/* start of the edit button */
+.edit {
+  font-weight: bold;
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-image: linear-gradient(to top, #D82148 0%, #330867 100%);
+  border: solid 3px transparent;
+  background-clip: padding-box;
+  box-shadow: 0px 0px 0px 3px #ffffff00;
+  color: white;
+  min-height: 40px;
+  padding: 0 13px 0 13px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .5s ease;
+}
+
+.edit:active {
+  transform: scale(.9);
+  transition: all 100ms ease;
+}
+
+.edit:hover {
+  box-shadow: 0px 0px 0px 3px #D82148;
+}
+
+.edit svg {
+  width: 16px;
+}
+/* end of the edit button */
+
+/* start of the delete button */
+.btn {
+  background-color: #D82148;
+  margin: auto;
+  margin-top: 30px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: none;
+  position: relative;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 5px .2px #00000035;
+  box-shadow: 1px 1px 5px .2px #00000035;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+  transition-delay: .2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: space-between;
+}
+
+.btn:hover {
+  width: 150px;
+  transition-delay: .2s;
+}
+
+.btn:hover > .paragraph {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-delay: .4s;
+  transition-delay: .4s;
+}
+
+.btn:hover > .icon-wrapper .icon {
+  transform: scale(1.1);
+}
+
+.bnt:hover > .icon-wrapper .icon path {
+  stroke: black;
+}
+
+.paragraph {
+  color: black;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 18px;
+  margin-right: 20px;
+  padding-left: 20px;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.icon-wrapper {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  transform: scale(.9);
+  transition: .2s linear;
+}
+
+.icon path {
+  stroke: #000;
+  stroke-width: 2px;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+/* end of the delete button */
+
+/* this is the start of the submit edit button */
+.submit {
+  margin: auto;
+  margin-top: 30px;
+  font-family: inherit;
+  font-size: 20px;
+  background: #D82148;
+  color: #03001C;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.submit span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.submit svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.submit:hover .fourth {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.submit:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.submit:hover span {
+  transform: translateX(5em);
+}
+
+.submit:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+/* this is the end of the submit edit button */
+
+/* this is the start of the create button */
+/* inspired from this svgbackgrounds.com/ */
+.create {
+  margin: auto;
+  margin-top: 30px;
+  width: fit-content;
+  display: flex;
+  padding: 0.6em 1.1em;
+  gap: 0.4rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+  background: linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat;
+  background-size: 300%;
+  background-position: left center;
+  transition: background .3s ease;
+  color: #fff;
+}
+
+.create:hover {
+  background-size: 320%;
+  background-position: right center;
+}
+
+.create:hover svg {
+  fill: #fff;
+}
+
+.create svg {
+  width: 23px;
+  fill: #f09f33;
+  transition: .3s ease;
+}
+/* this is the end of the create button */
+
+/* this is the start of the login button */
+.login {
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: #03001C;
+  background: #ad5389;
+  /* background: linear-gradient(to right, #0f0c29, #302b63, #24243e); */
+  background-color: #D82148;
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
+
+.login svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.login span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.login:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.login:hover span {
+  transform: translateX(7px);
+}
+/* this is the end of the login button */
+
+/* this is the start of the register button */
+.register {
+  margin: auto;
+  margin-top: 30px;
+  border: 2px solid #D82148;
+  background-color: #D82148;
+  border-radius: 0.9em;
+  padding: 0.8em 1.2em 0.8em 1em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+ }
+ 
+ .register span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #03001C;
+  font-weight: 600;
+ }
+ 
+ .register:hover {
+  background-color: #D82148;
+ }
+/* this is the end of the register button */
+
+/* this is the start of get started button */
+.getStarted {
+  --border-radius: 25px;
+  --border-width: 7px;
+  appearance: none;
+  position: relative;
+  padding: 1em 2em;
+  border: 0;
+  background-color: #212121;
+  font-family: "Roboto", Arial, "Segoe UI", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffff;
+  z-index: 2;
+}
+
+.getStarted::after {
+  --m-i: linear-gradient(#000, #000);
+  --m-o: content-box, padding-box;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--border-width);
+  background-image: conic-gradient(
+		#ff0080,
+		#ff0080,
+		#ff0080,
+		#ff0080,
+		#ff0080,
+		#ff0080,
+		#ff0080
+	);
+  -webkit-mask-image: var(--m-i), var(--m-i);
+  mask-image: var(--m-i), var(--m-i);
+  -webkit-mask-origin: var(--m-o);
+  mask-origin: var(--m-o);
+  mask-clip: var(--m-o);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: hue-rotate(0);
+  animation: rotate-hue634 linear 500ms infinite;
+  animation-play-state: paused;
+  border-radius: 20px;
+  border-color: #000;
+}
+
+.getStarted:hover::after {
+  animation-play-state: running;
+  border-radius: 10px;
+}
+
+@keyframes rotate-hue634 {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+
+.getStarted,
+.getStarted::after {
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.getStarted:active {
+  --border-width: 5px;
+}
+
+.welcome {
+  padding: 0.9em 1.6em;
+  border: none;
+  outline: none;
+  color: #FFF;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 32px;
+}
+
+.welcome::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(46, 46, 46);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.welcome::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #07d888, #e40851, #2f00ff, #00ff37,
+      #ec0808, #2600ff, #0bd157, #2f00ff
+);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing345 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 20px;
+  opacity: 0;
+}
+
+@keyframes glowing345 {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.welcome:hover::before {
+  opacity: 1;
+}
+
+.welcome:active:after {
+  background: transparent;
+}
+
+.welcome:active {
+  color: #000;
+  font-weight: bold;
+}
+/* this is the end of get started getStarted */
+ 
+ 
  

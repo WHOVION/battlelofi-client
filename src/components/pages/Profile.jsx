@@ -141,15 +141,15 @@ export default function Profile({currentUser, handleLogout}) {
 	return (
 		<div>
 			<h1>Hello, {user?.name}</h1>
-			<p>Logged in: {user?.email}</p>
+			<h2>Logged in: {user?.email}</h2>
 
 			<div style = {{display: 'flex'}}>
 				<div style = {{width:'50vw'}}>
-					<h3>Created Events</h3>
+					<h2>Created Events</h2>
 					{createdEvents}
 				</div>
 				<div style = {{width: '50vw'}}>
-					<h3>RSVP'd events</h3>
+					<h2>RSVP'd events</h2>
 					{rsvpEvents}
 				</div>
 
