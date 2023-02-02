@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useParams } from 'react-router-dom'
-import Details from './Details'
+import { BrowserRouter as useNavigate, useParams } from 'react-router-dom'
+
 
 
 const Edit = () => {
@@ -33,7 +33,7 @@ const Edit = () => {
 			}
 		}
 		fetchEvents()
-	}, [])
+	}, [id])
 
 
     const handleSubmit = async  e => {

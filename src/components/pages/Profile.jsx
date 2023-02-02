@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import Card from 'react-bootstrap/Card';
+
 
 export default function Profile({currentUser, handleLogout}) {
 	// state for the secret message (aka user privilaged data)
@@ -51,7 +51,7 @@ export default function Profile({currentUser, handleLogout}) {
 				}
 			}
 			fetchData()
-	}, []) // only fire on the first render of this component
+	}, [handleLogout, navigate]) // only fire on the first render of this component
 
 	const createdEvents =  events.map(event => {
 		return (

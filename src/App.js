@@ -1,8 +1,7 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate
+  Route
 } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Login from './components/pages/Login'
@@ -14,8 +13,11 @@ import New from './components/pages/New'
 import Details from './components/pages/Details'
 import Events from './components/pages/Events' 
 import Edit from './components/pages/Edit' 
+import Footer from './components/Footer'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -100,6 +102,15 @@ function App() {
           />
         </Routes>
       </div>
+
+      <footer className='footer--pin'>
+
+        <Footer 
+          currentUser={currentUser}
+          handleLogout={handleLogout}
+        />
+      </footer>
+    
     </Router>
   );
 }

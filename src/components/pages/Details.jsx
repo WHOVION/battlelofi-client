@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function Details(props) {
 	const [event, setEvent] = useState([])
@@ -42,7 +42,7 @@ export default function Details(props) {
 			}
 		}
 		fetchEvents()
-	},[])
+	},[id])
 	
 
 	const handleRSVPClick = async() => {
@@ -61,7 +61,7 @@ export default function Details(props) {
 				id: props.currentUser?.id,
 				event: id
 			}
-			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, reqBody)
+			await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, reqBody)
 		}catch(err){
 			console.log(err)
 		}
@@ -69,7 +69,7 @@ export default function Details(props) {
 
 	const handleDeleteClick = async() => {
 		try{
-			const deleteEvent = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
+			await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`)
 			navigate(`/events`)
 		}catch(err){
 			console.log(err)
