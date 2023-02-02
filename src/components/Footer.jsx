@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
+import { MDBFooter, MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
             <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Eszra J-S</h6>
               <p>
-                <a href='https://github.com/WHOVION' className='text-reset' target="_blank">
+                <a href='https://github.com/WHOVION' className='text-reset' target="_blank" rel='noreferrer'>
                   Github
                 </a>
               </p>
@@ -23,7 +23,7 @@ export default function App() {
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Paul K</h6>
               <p>
-                <a href='https://github.com/paulyjkim1' className='text-reset' target="_blank">
+                <a href='https://github.com/paulyjkim1' className='text-reset' target="_blank" rel='noreferrer'>
                   Github
                 </a>
               </p>
