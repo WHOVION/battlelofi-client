@@ -17,13 +17,13 @@ const Events = ({currentUser}) => {
 	}
 
 	//  this is called a function expression
-	// const handleRoute = () => {
-	// 	if (!currentUser) {
-	// 		navigate('/login')
-	// 	} else {
-	// 		navigate('/new')
-	// 	}
-	// }
+	const handleRoute = () => {
+		if (!currentUser) {
+			navigate('/login')
+		} else {
+			navigate('/new')
+		}
+	}
 	
 	// show all events
 	useEffect(() => {
@@ -84,15 +84,13 @@ const Events = ({currentUser}) => {
 		<div>
 			<div>
 				<h1>Browse All Events:</h1>
-				<Link to ='/new' styel={{textDecoration: 'none'}}>
 				{/* <button>Create a new Event</button> */}
-				<button className="create">
+				<button onClick={() => handleRoute} className="create">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
 							<path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
 						</svg>
 						Create a New Event
-					</button>
-				</Link>
+				</button>
 			</div>
 
 			<div>
@@ -105,3 +103,5 @@ const Events = ({currentUser}) => {
 }
  
 export default Events;
+
+// style={{textDecoration: 'none'}}
