@@ -50,25 +50,31 @@ export default function Login({ currentUser, setCurrentUser }) {
 			<p>{msg}</p>
 
 			<form onSubmit={handleSubmit}>
-				<label htmlFor='email'>Email:</label>
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
+				<div className="form__group field">
+					<input 
+						className="form__field"
+						type="email"
+						id="email"
+						placeholder='your email...'
+						onChange={e => setEmail(e.target.value)}
+						value={email} 
+					/>
+					<label className="form__label" htmlFor="email">Email:</label>
+				</div>
 
-				<label htmlFor='password'>Password:</label>
-				<input 
-					type="password"
-					id="password"
-					placeholder='password...'
-					onChange={e => setPassword(e.target.value)}
-					value={password}
-				/>
+				<div className="form__group field">
+    				<input 
+						className="form__field"
+						type="password"
+						id="password"
+						placeholder='password...'
+						onChange={e => setPassword(e.target.value)}
+						value={password} 
+					/>
+					<label className="form__label" htmlFor="password">Password:</label>
+				</div>
 
-				<button type="submit">Login</button>
+				<button className='button' type="submit">Login</button>
 			</form>
 		</div>
 	)

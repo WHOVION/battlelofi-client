@@ -49,207 +49,100 @@ const New = ({currentUser}) => {
 					.catch(console.warn)
 					// handle erros 
 			}
-
-	// const loggedIn = () => {
-		{/* if the user is logged in... */}
-	
-		// submit handler function that posts the form data from state to the backend
-		// const handleSubmit = e => {
-		// 	e.preventDefault()
-		// 	// console.log('create new event')
-		// 	// take the form data from the state, post it to the backend with axios
-		// 	// axios.post(url to make a request to,{request body }. {options})
-		// 	axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`, form)
-		// 		.then(response => {
-		// 			console.log(response.data)
-		// 			// once the backend gets back to use, navigate to the /events route to see all events
-		// 			navigate('/') // like clicking a link for the user
-		// 		})
-		// 		.catch(console.warn)
-		// 		// handle errors 
-		// }
-		// return ( 
-		// 	<div>
-		// 		<form onSubmit={handleSubmit}>
-		// 			<div>
-		// 				<label htmlFor='name'>Name:</label>
-		// 				<input
-		// 					type='text'
-		// 					id='name'
-		// 					placeholder='Name...'
-		// 					value={form.name}
-		// 					onChange={e => setForm({...form, name: e.target.value})}
-		// 					// automatically add users name to form, so would this be hidden?
-		// 				/>
-	
-		// 				<label htmlFor='location'>Location:</label>
-		// 				<input
-		// 					type='text'
-		// 					id='location'
-		// 					placeholder='Location...'
-		// 					value={form.location}
-		// 					onChange={e => setForm({...form, location: e.target.value})}
-		// 				/>
-		// 			</div>
-	
-		// 			<div>
-		// 				<label htmlFor='date'>Date:</label>
-		// 				<input
-		// 					type='text'
-		// 					id='date'
-		// 					placeholder='Date...'
-		// 					value={form.date}
-		// 					onChange={e => setForm({...form, date: e.target.value})}
-		// 				/>
-	
-		// 				<label htmlFor='timezone'>Timezone:</label>
-		// 				<input
-		// 					type='text'
-		// 					id='timezone'
-		// 					placeholder='Timezone...'
-		// 					value={form.timezone}
-		// 					onChange={e => setForm({...form, timezone: e.target.value})}
-		// 				/>
-		// 			</div>
-	
-		// 			<div>
-		// 				<label htmlFor='gameTitle'>Game:</label>
-		// 				<input
-		// 					type='text'
-		// 					id='gameTitle'
-		// 					placeholder='Game Title...'
-		// 					value={form.gameTitle}
-		// 					onChange={e => setForm({...form, gameTitle: e.target.value})}
-		// 				/>
-	
-		// 				<label htmlFor='details'>Details About event:</label>
-		// 				<input
-		// 					type='text'
-		// 					id='details'
-		// 					placeholder='Details...'
-		// 					value={form.details}
-		// 					onChange={e => setForm({...form, details: e.target.value})}
-		// 				/>
-		// 			</div>
-	
-		// 			<div>
-		// 				<input
-		// 					hidden
-		// 					type= {''}
-		// 					// is this right?
-		// 					id='rsvp'
-		// 					value={form.rsvp}
-		// 				/>
-		// 			</div>
-	
-		// 			<button type='submit'>Create Event</button>
-		// 		</form>
-		// 	</div>
-		//  );
-	// }
-
-	//  const loggedOut = () => {
-	// 		navigate('./login')
-	// 		// /api-v1/login
-	// 		// ./api-v1/users/register
-	//  }
-	//  const redirect = () => {
-	// 	navigate('/login')	
-	// }
-	// console.log(currentUser)
-	// currentUser ? handleSubmit : navigate('/login')
 	if (!currentUser) {
 		return <Navigate to='/login' />
 	} 
 	return ( 
 			<div>
-			{/* {currentUser ? loggedIn : loggedOut} */}
-			{/* {currentUser ? handleSubmit : navigate('./login')} */}
-			<div>
+				<h1>Create a new Event:</h1>
 				<form onSubmit={handleSubmit}>
-					<div>
-						<label htmlFor='name'>Event Name:</label>
-						<input
-							type='text'
-							id='name'
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="name"
 							placeholder='Name...'
-							value={form.name}
+							value={form.name} 
 							onChange={e => setForm({...form, name: e.target.value})}
 						/>
+						<label className="form__label" htmlFor="name">Event Name:</label>
 					</div>
-	
-					<div>
-						<label htmlFor='location'>Location:</label>
-						<input
-							type='text'
-							id='location'
-							placeholder='Location...'
-							value={form.location}
-							onChange={e => setForm({...form, location: e.target.value})}
-						/>
-					
-						<label htmlFor='date'>Date:</label>
-						<input
-							type='text'
-							id='date'
-							placeholder='Date...'
-							value={form.date}
-							onChange={e => setForm({...form, date: e.target.value})}
-						/>
 
-						<label htmlFor='date'>Time:</label>
-						<input
-							type='text'
-							id='time'
-							placeholder='Time...'
-							value={form.time}
-							onChange={e => setForm({...form, time: e.target.value})}
-						/>
-	
-						<label htmlFor='timezone'>Timezone:</label>
-						<input
-							type='text'
-							id='timezone'
-							placeholder='Timezone...'
-							value={form.timezone}
-							onChange={e => setForm({...form, timezone: e.target.value})}
-						/>
-					</div>
-	
-					<div>
-						<label htmlFor='gameTitle'>Game:</label>
-						<input
-							type='text'
-							id='gameTitle'
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="gameTitle"
 							placeholder='Game Title...'
-							value={form.gameTitle}
+							value={form.gameTitle} 
 							onChange={e => setForm({...form, gameTitle: e.target.value})}
 						/>
-	
-						<label htmlFor='details'>Details About event:</label>
-						<input
-							type='text'
-							id='details'
-							placeholder='Details...'
-							value={form.details}
-							onChange={e => setForm({...form, details: e.target.value})}
+						<label className="form__label" htmlFor="gameTitle">Game:</label>
+					</div>
+
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="location"
+							placeholder='Location...'
+							value={form.location} 
+							onChange={e => setForm({...form, location: e.target.value})}
 						/>
+						<label className="form__label" htmlFor="location">Location:</label>
+					</div>
+
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="date"
+							placeholder='Date...'
+							value={form.date} 
+							onChange={e => setForm({...form, date: e.target.value})}
+						/>
+						<label className="form__label" htmlFor="date">Date:</label>
+					</div>
+
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="time"
+							placeholder='Time...'
+							value={form.time} 
+							onChange={e => setForm({...form, time: e.target.value})}
+						/>
+						<label className="form__label" htmlFor="time">Time:</label>
+					</div>
+
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="timezone"
+							placeholder='Timezone...'
+							value={form.timezone} 
+							onChange={e => setForm({...form, timezone: e.target.value})}
+						/>
+						<label className="form__label" htmlFor="timezone">Timezone:</label>
 					</div>
 	
-					{/* <div>
-						<input
-							hidden
-							type= ''
-							id='host'
-							value={currentUser.id}
-							// readOnly
+					<div className="form__group field">
+						<input 
+							className="form__field"
+							type="text"
+							id="details"
+							placeholder='Details...'
+							value={form.details} 
+							onChange={e => setForm({...form, details: e.target.value})}
 						/>
-					</div> */}
-	
-					<button type='submit'>Create Event</button>
+						<label className="form__label" htmlFor="details">Details About event:</label>
+					</div>
+
+					<button className='button' type='submit'>Create Event</button>
 				</form>
 			</div>
-		</div>
 	 );
 }
  
