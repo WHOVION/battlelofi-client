@@ -43,30 +43,55 @@ const Events = ({currentUser}) => {
 	// map out the events, each will need a onClick that shows their details (set their id in state)
 	const eventComponents =  events.map(event => {
 		return (
-			<div key={`event-${event._id}`}>
-				<h3>{event.name}</h3>
-				{/* <p>{event.location}</p>
-				<p>{event.date}</p>
-				<p>{event.time}</p> */}
-				<p>{event.gameTitle}</p>
-				{/* <p>{event.details}</p> */}
-				<button onClick={() => redirect(event)}>Event Details</button>
+			
+			<div className="card" key={`event-${event._id}`}>
+				<div className="card__content">
+					<div className="card__content-heading">
+						<h2>{event.name}</h2>
+					</div>
+					<div className="card__content-body">
+						<p> 
+							{event.gameTitle}
+						</p>
+					</div>
+					<div className="card__content-footer">
+						<button onClick={() => redirect(event)}>Event Details</button>
+					</div>
+				</div>
 			</div>
+
+			// <div className="card" key={`event-${event._id}`}>
+			// 	<div className="card-details">
+			// 		<p className="text-title">{event.name}</p>
+			// 		<p className="text-body">{event.gameTitle}</p>
+			// 	</div>
+			// 	<button className="card-button" onClick={() => redirect(event)}>Event Details</button>
+			// </div>
+
+			// <div key={`event-${event._id}`}>
+			// 	<h3>{event.name}</h3>
+			// 	{/* <p>{event.location}</p>
+			// 	<p>{event.date}</p>
+			// 	<p>{event.time}</p> */}
+			// 	<p>{event.gameTitle}</p>
+			// 	{/* <p>{event.details}</p> */}
+			// 	<button onClick={() => redirect(event)}>Event Details</button>
+			// </div>
+
 		)
 	})
 
 	return ( 
 		<div>
 			<div>
-				<h1>Check out new Events here:</h1>
+				<h1>Browse All Events:</h1>
 				<Link to ='/new'>
 				<button>Create a new Event</button>
 				</Link>
 			</div>
 
-			<div style={{display: 'flex'}}>
-            	<div style={{width: '50vw'}}>
-                	<h2>All Events</h2>
+			<div>
+            	<div>
                 	{eventComponents}
         		</div>
 			</div>
