@@ -50,37 +50,47 @@ export default function Register({ currentUser, setCurrentUser }) {
 			<h1>Register for an account:</h1>
 
 			<p>{msg}</p>
+			<div>
+				<form onSubmit={handleSubmit}>
+					<div className="form__group field">
+    					<input 
+							className="form__field"
+							type="text"
+							id="name"
+							placeholder='your username...'
+							onChange={e => setName(e.target.value)}
+							value={name} 
+						/>
+						<label className="form__label" htmlFor="name">Name:</label>
+					</div>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='name'>Name:</label>
-				<input 
-					type="text"
-					id="name"
-					placeholder='your username...'
-					onChange={e => setName(e.target.value)}
-					value={name}
-				/>
+					<div class="form__group field">
+    					<input 
+							className="form__field"
+							type="text"
+							id="email"
+							placeholder='your email...'
+							onChange={e => setEmail(e.target.value)}
+							value={email} 
+						/>
+						<label className="form__label" htmlFor="email">Email:</label>
+					</div>
 
-				<label htmlFor='email'>Email:</label>
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
+					<div class="form__group field">
+    					<input 
+							className="form__field"
+							type="text"
+							id="password"
+							placeholder='password...'
+							onChange={e => setPassword(e.target.value)}
+							value={password} 
+						/>
+						<label className="form__label" htmlFor="password">Password:</label>
+					</div>
 
-				<label htmlFor='password'>Password:</label>
-				<input 
-					type="password"
-					id="password"
-					placeholder='password...'
-					onChange={e => setPassword(e.target.value)}
-					value={password}
-				/>
-
-				<button type="submit">Register</button>
-			</form>
+					<button type="submit" className='button'>Register</button>
+				</form>
+			</div>
 		</div>
 	)
 }
