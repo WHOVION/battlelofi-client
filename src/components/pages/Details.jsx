@@ -12,17 +12,17 @@ export default function Details(props) {
 	const [didRSVP, setDidRSVP] = useState(null)
 	const yes = (
 		<>
-			<p>You are the Host</p>
+			<p className='detailP'>You are the Host</p>
 		</>
 	)
 	const yesRSVPd = (
 		<>
-			<p>You are already RSVP'd to this event</p>
+			<p className='detailP'>You are already RSVP'd to this event</p>
 		</>
 	)
 	const yesRSVP = (
 		<>
-			<p>You have just RSVPd!</p>
+			<p className='detailP'>You have just RSVPd!</p>
 		</>
 	)
 	const no = (
@@ -89,8 +89,8 @@ export default function Details(props) {
 			<>
 				<button className='edit' onClick={handleEditClick}>
 					<svg className="css-i6dzq1" 
-					stroke-linejoin="round" stroke-linecap="round" fill="none" 
-					stroke-width="2" stroke="#FFFFFF" height="24" 
+					strokeLinejoin="round" strokeLinecap="round" fill="none" 
+					strokeWidth="2" stroke="#FFFFFF" height="24" 
 					width="24" viewBox="0 0 24 24">
 					<path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path> 
 					</svg>
@@ -99,15 +99,15 @@ export default function Details(props) {
 				{/* <button onClick={handleEditClick}>Edit</button> */}
 
 				<button onClick={handleDeleteClick} className="btn">
-					<p class="paragraph"> Delete </p>
+					<p className="paragraph"> Delete </p>
 					<span className="icon-wrapper">
 					<svg className="icon" width="30px" height="30px" 
 					viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 
 					19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 
 					11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 
-					5V7M8 7H16" stroke="#000000" stroke-width="2" stroke-linecap="round" 
-					stroke-linejoin="round"></path>
+					5V7M8 7H16" stroke="#000000" strokeWidth="2" strokeLinecap="round" 
+					strokeLinejoin="round"></path>
 					</svg>
 					</span>
 				</button>
@@ -126,7 +126,7 @@ export default function Details(props) {
 			<h2>Host: {event.host?.name}</h2>
 			<div>
 				<h3>Date and Time:</h3>
-				<p>{event.date} at {event.time} {event.timezone}</p>
+				<p className='detailP'>{event.date} at {event.time} {event.timezone}</p>
 			</div>
 			<div>
 				<h3>Location: <span>{event.location}</span></h3>
@@ -134,7 +134,7 @@ export default function Details(props) {
 			</div>
 			<div>
 				<h3>Details:</h3>
-				<p>{event.details}</p>
+				<p className='detailP'>{event.details}</p>
 			</div>
 			{/* <button onClick={handleRSVPClick}>RSVP</button> */}
 			<button className='rsvp' onClick={handleRSVPClick}>

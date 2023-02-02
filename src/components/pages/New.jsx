@@ -59,6 +59,7 @@ const New = ({currentUser}) => {
 				<form onSubmit={handleSubmit}>
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="name"
@@ -71,6 +72,7 @@ const New = ({currentUser}) => {
 
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="gameTitle"
@@ -83,6 +85,7 @@ const New = ({currentUser}) => {
 
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="location"
@@ -95,6 +98,7 @@ const New = ({currentUser}) => {
 
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="date"
@@ -107,6 +111,7 @@ const New = ({currentUser}) => {
 
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="time"
@@ -119,6 +124,7 @@ const New = ({currentUser}) => {
 
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="timezone"
@@ -131,6 +137,7 @@ const New = ({currentUser}) => {
 	
 					<div className="form__group field">
 						<input 
+							required
 							className="form__field"
 							type="text"
 							id="details"

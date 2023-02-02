@@ -84,7 +84,7 @@ const Events = ({currentUser}) => {
 		<div>
 			<div>
 				<h1>Browse All Events:</h1>
-				<Link to ='/new'>
+				<Link to ='/new' styel={{textDecoration: 'none'}}>
 				{/* <button>Create a new Event</button> */}
 				<button className="create">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
