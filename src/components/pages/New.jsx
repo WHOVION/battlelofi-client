@@ -141,7 +141,13 @@ const New = ({currentUser}) => {
 						<label className="form__label" htmlFor="details">Details About event:</label>
 					</div>
 
-					<button className='button' type='submit'>Create Event</button>
+					{/* <button className='button' type='submit'>Create Event</button> */}
+					<button className="create" type="submit">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+							<path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+						</svg>
+						Create Event
+					</button>
 				</form>
 			</div>
 		</div>

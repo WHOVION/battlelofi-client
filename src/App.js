@@ -57,7 +57,7 @@ function App() {
         <Routes>
           <Route 
             path="/"
-            element={<Welcome />}
+            element={<Welcome currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
 
           <Route 
