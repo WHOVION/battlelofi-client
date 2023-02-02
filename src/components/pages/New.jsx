@@ -53,8 +53,9 @@ const New = ({currentUser}) => {
 		return <Navigate to='/login' />
 	} 
 	return ( 
+		<div>
+			<h1>Create a New Event</h1>
 			<div>
-				<h1>Create a new Event:</h1>
 				<form onSubmit={handleSubmit}>
 					<div className="form__group field">
 						<input 
@@ -143,6 +144,7 @@ const New = ({currentUser}) => {
 					<button className='button' type='submit'>Create Event</button>
 				</form>
 			</div>
+		</div>
 	 );
 }
  
