@@ -64,7 +64,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 						<label className="form__label" htmlFor="name">Name:</label>
 					</div>
 
-					<div class="form__group field">
+					<div className="form__group field">
     					<input 
 							className="form__field"
 							type="text"
@@ -76,7 +76,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 						<label className="form__label" htmlFor="email">Email:</label>
 					</div>
 
-					<div class="form__group field">
+					<div className="form__group field">
     					<input 
 							className="form__field"
 							type="text"
