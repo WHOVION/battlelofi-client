@@ -1,13 +1,31 @@
 body {
   /* text-align: center; */
-  background-color: #03001C;
-  /* background-color: white; */
+  background-color: #03001C !important;
+  /* background-color: black; */
   color: #D82148;
   margin: 0;
   font-family: 'Electrolize', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.navbar {
+  background-color: #03001C!important;
+  --bs-navbar-brand-color: white !important;
+  --bs-navbar-active-color: white !important;
+  --bs-navbar-brand-hover-color: white !important;
+  border-bottom: solid white;
+  margin-bottom: 20px;
+
+}
+footer {
+  /* margin-top: 10px; */
+  border-top: solid white;
+}
+
+#wordC{
+  color: white !important;
+}
+
 .aboutP {
   margin-left: auto;
   margin-right: auto;
@@ -22,12 +40,13 @@ code {
     monospace;
 }
 
-h1 {
+h1, h2, h3 {
   color: #D82148
 }
-h2 {
+.detailP {
   color: #D82148
 }
+
 
 /* this is the start of the input css */
 .form__group {
@@ -264,7 +283,7 @@ h2 {
 
 /* start of the delete button */
 .btn {
-  background-color: #D82148;
+  background-color: #D82148 !important;
   margin: auto;
   margin-top: 30px;
   cursor: pointer;
@@ -406,6 +425,7 @@ h2 {
 /* this is the start of the create button */
 /* inspired from this svgbackgrounds.com/ */
 .create {
+  text-decoration: none;
   margin: auto;
   margin-top: 30px;
   width: fit-content;

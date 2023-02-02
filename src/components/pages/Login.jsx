@@ -47,7 +47,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 		<div>
 			<h1>Login to Your Account:</h1>
 
-			<p>{msg}</p>
+			<p className='detailP'>{msg}</p>
 
 			<form onSubmit={handleSubmit}>
 				<div className="form__group field">
