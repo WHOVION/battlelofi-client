@@ -17,10 +17,11 @@ const Events = ({currentUser}) => {
 	}
 
 	//  this is called a function expression
-	const handleRoute = () => {
-		if (!currentUser) {
-			navigate('/login')
-		} else {
+	const handleRoute = () => {		
+		const token = localStorage.getItem('jwt')
+		if(!token) {			
+			navigate('/login')	
+		} else {			
 			navigate('/new')
 		}
 	}
@@ -31,7 +32,7 @@ const Events = ({currentUser}) => {
 			try {
 				const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
 				setEvents(response.data)
-				console.log(response.data)
+				// console.log(response.data)
 			} catch (error) {
 				console.log(error)
 			}
@@ -85,7 +86,7 @@ const Events = ({currentUser}) => {
 			<div>
 				<h1>Browse All Events:</h1>
 				{/* <button>Create a new Event</button> */}
-				<button onClick={() => handleRoute} className="create">
+				<button onClick={() => handleRoute()} className="create">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
 							<path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
 						</svg>
