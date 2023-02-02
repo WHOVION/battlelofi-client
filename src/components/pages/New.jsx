@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 // some r componentns
 // things that start with 'use' r hooks
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, Link } from 'react-router-dom'
-import Events from "./Events";
+import { BrowserRouter as Navigate, useNavigate } from 'react-router-dom'
+
 
 
 const New = ({currentUser}) => {

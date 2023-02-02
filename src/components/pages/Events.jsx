@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
-import Details from './Details'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 
 const Events = ({currentUser}) => {
 
 	const [events, setEvents] = useState([]) // array of all events
-	const [detailId, setDetailId] = useState('') // id of the last clicked event
+	// const [detailId, setDetailId] = useState('') // id of the last clicked event
 	const navigate = useNavigate()
 
 	const redirect = (events) => {
 		console.log(events)
-		setDetailId(events._id)
+		// setDetailId(events._id)
 		navigate(`/events/${events._id}`)	
 	}
 
